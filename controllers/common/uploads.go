@@ -1,7 +1,7 @@
 package common
 
 import (
-	"github.com/astaxie/beego"
+	beego "github.com/astaxie/beego"
 	"math/rand"
 	"path"
 	"strconv"

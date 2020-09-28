@@ -3,7 +3,6 @@ package admin
 import (
 	"github.com/astaxie/beego/orm"
 	"go-blog/utils"
-	"go-blog/utils/sys"
 	"time"
 )
 
@@ -88,8 +87,12 @@ func (c *MainController) Welcome() {
 	c.Data["Pv"] = pvSlice
 	c.Data["Uv"] = uvSlice
 
-	df,_:= sys.Df()
-	c.Data["Df"] = df
+	//df,_:= sys.Df()
+	var res = make(map[string]interface{})
+	res["allTotal"] = 10
+	res["allUsed"] = 5
+	res["ratio"] = int(5/10 * 100)
+	c.Data["Df"] = res
 
 	c.TplName = "admin/welcome.html"
 }
