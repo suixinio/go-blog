@@ -18,6 +18,7 @@
 <style>
     .day{
         margin-bottom: 20px;
+        cursor:pointer
     }
 </style>
 
@@ -68,10 +69,10 @@
 
                 <!--done-->
                 {{range $key ,$vlaue := $.Data}}
-                <div class="day">
-                    <div class="dayTitle diyBg">
-                        <a href="/list.html?date={{dateformat $vlaue.Created "2006-01-02"}}">{{$vlaue.Created}}</a>
-                    </div>
+                <div class="day" href="/">
+{{/*                    <div class="dayTitle diyBg">*/}}
+{{/*                        <a href="/list.html?date={{dateformat $vlaue.Created "2006-01-02"}}">{{$vlaue.Created}}</a>*/}}
+{{/*                    </div>*/}}
                     <div class="postTitle">
                         <a class="postTitle2" title="{{$vlaue.Title}}" href="/detail/{{$vlaue.Id}}.html">
                             {{$vlaue.Title}}
@@ -79,8 +80,8 @@
                     </div>
                     <div class="postCon">
                         <div class="c_b_p_desc">
-                            摘要：{{$vlaue.Remark}}
-                            <a title="{{$vlaue.Title}}" href="/detail/{{$vlaue.Id}}.html" class="c_b_p_desc_readmore">阅读全文</a>
+                            {{$vlaue.Remark}}
+{{/*                            <a title="{{$vlaue.Title}}" href="/detail/{{$vlaue.Id}}.html" class="c_b_p_desc_readmore">阅读全文</a>*/}}
                         </div>
                     </div>
                     <div class="clear"></div>
@@ -189,6 +190,11 @@
     {{template "home/leechan/footer.html" .}}
     <!--end: footer -->
 </div><!--end: home 自定义的最大容器 -->
-
+<script>
+    $(".day").click(function(){
+        window.location=$(this).find("a").attr("href");
+        return false;
+    });
+</script>
 </body>
 </html>
